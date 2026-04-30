@@ -79,10 +79,30 @@
         background: linear-gradient(90deg, transparent, #570000, transparent);
         margin: 30px 0;
       }
+
+      .top-link {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        color: #570000;
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .top-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+      }
     </style>
   </head>
 
   <body>
+    <a class="top-link" href="resume.html">Resume</a>
     <div class="container">
       <div class="card">
         <div class="card-header">
