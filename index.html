@@ -82,8 +82,18 @@
 
       .top-link {
         position: fixed;
-        top: 20px;
-        left: 20px;
+        top: 5px;
+        left: 0px;
+        padding: 10px 16px;
+        color: #570000;
+        text-decoration: none;
+        font-weight: 700;
+        display: flex;
+        gap: 10px;
+      }
+
+      .top-link-text {
+        left: 0px;
         padding: 10px 16px;
         background: rgba(255, 255, 255, 0.9);
         border-radius: 999px;
@@ -92,9 +102,10 @@
         font-weight: 700;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
       }
 
-      .top-link:hover {
+      .top-link-text:hover {
         transform: translateY(-2px);
         box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
       }
@@ -102,7 +113,11 @@
   </head>
 
   <body>
-    <a class="top-link" href="resume.html">Resume</a>
+    <div class="top-link">
+        <a class="top-link-text" href="resume.html">Resume</a>
+        <a class="top-link-text" href="https://github.com/ColeRollinPearson" target="_blank">GitHub</a>
+        <a class="top-link-text" href="https://www.linkedin.com/in/cole-pearson-3bb061152" target="_blank">LinkedIn</a>
+    </div>
     <div class="container">
       <div class="card">
         <div class="card-header">
@@ -111,7 +126,7 @@
         </div>
         <div class="divider"></div>
         <div class="card-body">
-          <p>I am in the process of creating a web portfolio to showcase my passions and skill sets! Thank you so much for visiting!</p>
+          <p>I have created this website to showcase my skillsets and give interested parties easy access to information about myself. Thank you for visiting!</p>
         </div>
       </div>
     </div>
