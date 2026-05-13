@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+    .top-link {
+        flex-direction: column;
+    }
+}
+
 body {
     background: linear-gradient(135deg, #8a7c7c 0%, #800000 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -103,4 +109,39 @@ body {
 .top-link-text:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+}
+
+.tab-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-link {
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+    color: #570000;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tab-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hidden {
+    display: none;
+}
+
+#tab-toggle {
+    border: none;
+    cursor: pointer;
+}
+
+#tab-toggle img {
+    width: 16px;
+    height: auto;
 }

@@ -8,13 +8,17 @@
   </head>
 
   <body>
+
     <div class="top-link">
-        <a class="top-link-text" href="resume.html">Resume</a>
-        <a class="top-link-text" href="https://github.com/ColeRollinPearson" target="_blank">GitHub</a>
-        <a class="top-link-text" href="https://www.linkedin.com/in/cole-pearson-3bb061152" target="_blank">LinkedIn</a>
-        <!-- <a class="top-link-text" href="interview.html">Interview Questions</a> -->
+        <button id="tab-toggle" class="top-link-text"><img src="menu-icon.png" alt="Menu"></button>
+        <div id="tab-bar" class="tab-bar hidden">
+            <a href="resume.html" class="tab-link">Resume</a>
+            <!-- <a href="interview.html" class="tab-link">Q/A</a> -->
+            <a class="tab-link" href="https://www.linkedin.com/in/cole-pearson-3bb061152" target="_blank">LinkedIn</a>
+            <a class="top-link-text" href="https://github.com/ColeRollinPearson" target="_blank">GitHub</a>
+        </div>
     </div>
-    <div style="height: 20px;"></div>
+
     <div class="container">
       <div class="card">
         <div class="card-header">
@@ -25,22 +29,16 @@
         <div class="card-body">
           <p>I have created this website to showcase my skillsets and give interested parties easy access to information about myself. Thank you for visiting!</p>
         </div>
+        <div class="card-body">
+          <p>If you would like to get in touch but do not have access to my professional contact information, please feel free to email me at <u>supercole0092@gmail.com</u>.</p>
+        </div>
         <div class="divider"></div>
       </div>
     </div>
     <div style="height: 20px;"></div>
-    <div class="container">
-      <div class="card">
-        <div class="card-header">
-          <h1>Contact Information</h1>
-        </div>
-        <div class="divider"></div>
-        <div class="card-body">
-          <p>colerollinpearson@gmail.com</p>
-          <p>(210) 623-0092</p>
-        </div>
-      </div>
-    </div>
+
+    <script src="tabs.js"></script>
+
   </body>
 </html>
 
