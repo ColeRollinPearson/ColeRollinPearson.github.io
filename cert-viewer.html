@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cole Pearson Resume</title>
+  <title>Certificate Viewer</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="viewer-page">
@@ -28,7 +28,7 @@
         <!-- <a href="portfolio.html" class="site-nav-link">Portfolio</a> -->
         <a href="research.html" class="site-nav-link">Research</a>
         <!-- <a href="interview.html" class="site-nav-link">Q/A</a> -->
-        <a href="certifications.html" class="site-nav-link">Certifications</a>
+        <a href="certifications.html" class="site-nav-link active">Certifications</a>
         <a href="https://www.linkedin.com/in/cole-pearson-3bb061152" class="site-nav-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/ColeRollinPearson" class="site-nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
@@ -36,23 +36,23 @@
     <div class="site-nav-backdrop" hidden></div>
   </nav>
   <header class="page-header">
-    <h1>Resume Viewer</h1>
-    <a class="resume-format-link" href="resume-html.html">View HTML resume</a>
+    <h1 id="cert-viewer-title">Certificate Viewer</h1>
+    <a class="resume-format-link" href="certifications.html">Back to Certifications</a>
   </header>
   <main>
-    <section class="viewer">
-      <object data="2026-05-16 Website Resume Cole Pearson.pdf" type="application/pdf">
-        <iframe src="2026-05-16 Website Resume Cole Pearson.pdf" title="Resume PDF">
-          <p>Your browser does not support embedded PDFs.</p>
-          <p>You can <a href="2026-05-16 Website Resume Cole Pearson.pdf">download the resume here</a>.</p>
-        </iframe>
+    <section class="viewer" id="cert-viewer-section" hidden>
+      <object id="cert-pdf-object" type="application/pdf">
+        <iframe id="cert-pdf-iframe" title="Certificate PDF"></iframe>
       </object>
-      <div class="fallback">
-        <p>If the PDF does not display, download it directly:</p>
-        <p><a href="2026-05-16 Website Resume Cole Pearson.pdf" download>Download 2026-05-16 Website Resume Cole Pearson.pdf</a></p>
-      </div>
     </section>
+    <div class="fallback" id="cert-viewer-fallback">
+      <p id="cert-viewer-message">Loading certificate…</p>
+      <p id="cert-viewer-download" hidden>
+        <a id="cert-download-link" href="#" download>Download PDF</a>
+      </p>
+    </div>
   </main>
+  <script src="cert-viewer.js" defer></script>
   <script src="nav.js" defer></script>
 </body>
 </html>

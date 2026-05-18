@@ -23,15 +23,53 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    height: var(--nav-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    height: var(--nav-height);
     padding: 0 1.25rem;
     background: rgba(255, 255, 255, 0.97);
     border-bottom: 1px solid rgba(87, 0, 0, 0.12);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.site-nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.nav-toggle,
+.nav-close,
+.site-nav-backdrop {
+    display: none;
+}
+
+.nav-toggle,
+.nav-close {
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #570000;
+    cursor: pointer;
+    padding: 0.35rem;
+    border-radius: 6px;
+}
+
+.nav-toggle:focus-visible,
+.nav-close:focus-visible {
+    outline: 2px solid #570000;
+    outline-offset: 2px;
+}
+
+.nav-toggle svg,
+.nav-close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
 }
 
 .site-nav-brand {
@@ -44,6 +82,13 @@ body {
 
 .site-nav-brand:hover {
     color: #800000;
+}
+
+.site-nav-drawer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
 }
 
 .site-nav-links {
@@ -150,6 +195,23 @@ body.viewer-page .page-header {
     background: #ffffff;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     color: #570000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+body.viewer-page .resume-format-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+body.viewer-page .resume-format-link:hover {
+    text-decoration: underline;
 }
 
 body.viewer-page .page-header h1 {
@@ -200,20 +262,317 @@ body.viewer-page .fallback a:hover {
     text-decoration: underline;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px), (orientation: portrait) and (max-width: 1024px) {
     .site-nav {
-        height: auto;
-        min-height: var(--nav-height);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0.6rem 1rem;
+        padding: 0 1rem;
     }
 
-    body {
-        padding-top: 5.5rem;
+    .nav-toggle {
+        display: flex;
+    }
+
+    .site-nav-drawer {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        bottom: 0;
+        z-index: 1001;
+        flex: none;
+        width: min(280px, 85vw);
+        padding: 0.75rem 0;
+        background: #ffffff;
+        border-right: 1px solid rgba(87, 0, 0, 0.12);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    .nav-close {
+        display: flex;
+        align-self: flex-end;
+        margin: 0 0.75rem 0.5rem auto;
     }
 
     .site-nav-links {
-        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        flex-wrap: nowrap;
     }
+
+    .site-nav-link {
+        border-radius: 0;
+        padding: 0.85rem 1.25rem;
+        text-align: left;
+    }
+
+    .site-nav-link:hover {
+        background: rgba(87, 0, 0, 0.08);
+    }
+
+    .site-nav-backdrop {
+        display: block;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
+
+    body.nav-open .site-nav-drawer {
+        transform: translateX(0);
+    }
+
+    body.nav-open .site-nav-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-nav-drawer,
+    .site-nav-backdrop {
+        transition: none;
+    }
+}
+
+.resume-page .resume-page-main {
+    align-items: flex-start;
+    padding: 1.25rem;
+}
+
+.resume-document {
+    max-width: 8.5in;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 2rem 2.25rem;
+    color: #222;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.resume-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.resume-summary {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1.25rem;
+}
+
+.resume-section {
+    margin-bottom: 1.25rem;
+}
+
+.resume-section-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #570000;
+    border-bottom: 2px solid #570000;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.resume-entry {
+    margin-bottom: 1rem;
+}
+
+.resume-entry:last-child {
+    margin-bottom: 0;
+}
+
+.resume-entry-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+}
+
+.resume-entry-heading h3,
+.resume-subsection-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.resume-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+    white-space: nowrap;
+}
+
+.resume-entry ul,
+.resume-subsection ul {
+    margin-left: 1.25rem;
+    list-style-type: disc;
+}
+
+.resume-entry li,
+.resume-subsection li {
+    margin-bottom: 0.25rem;
+}
+
+.resume-subsection {
+    margin-bottom: 1rem;
+}
+
+.resume-subsection-title {
+    margin-bottom: 0.35rem;
+}
+
+.resume-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(87, 0, 0, 0.15);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.resume-footer a {
+    color: #570000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resume-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .resume-document {
+        padding: 1.25rem 1rem;
+    }
+
+    .resume-entry-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+
+    .resume-date {
+        white-space: normal;
+    }
+}
+
+@media print {
+    body.resume-page {
+        background: #ffffff;
+        padding-top: 0;
+    }
+
+    .site-nav,
+    .site-nav-backdrop,
+    .resume-footer {
+        display: none !important;
+    }
+
+    .resume-page-main {
+        padding: 0;
+        min-height: auto;
+    }
+
+    .resume-document {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: none;
+        padding: 0;
+    }
+}
+
+.certifications-body {
+    text-align: left;
+}
+
+.cert-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #570000;
+    margin: 1.25rem 0 0.75rem;
+    text-align: left;
+}
+
+.certifications-body .cert-section-title:first-child {
+    margin-top: 0;
+}
+
+.cert-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cert-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.5rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border-left: 3px solid #570000;
+}
+
+.cert-item-title {
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    min-width: 12rem;
+    text-align: left;
+}
+
+.cert-item a {
+    color: #570000;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.cert-item a:hover {
+    color: #800000;
+    text-decoration: underline;
+}
+
+body.viewer-page #cert-viewer-fallback {
+    margin: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 16px;
+}
+
+body.viewer-page #cert-viewer-fallback a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.viewer-page #cert-viewer-fallback a:hover {
+    text-decoration: underline;
 }
